@@ -2,9 +2,46 @@
 
 {% block body %}
 
-<div class="container">
-{{ form(form) }}
-</div>
+<h1 class="text-center mt-5">Ajout d'un contact</h1>
 
+<div class="container mt-5">
+
+   
+
+    {{ form_start(form) }}
+
+     
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+            
+        <div class="row">
+            <div class="col-md-6">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+            </div>
+            <div class="col-md-6">
+               {{ form_label(form.firstName) }}
+               {{ form_widget(form.firstName) }}
+               {{ form_errors(form.firstName) }}
+            </div>
+            <div class="col-md-6">
+                 {{ form_label(form.email) }}
+               {{ form_widget(form.email) }}
+               {{ form_errors(form.email) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_label(form.tel) }}
+               {{ form_widget(form.tel) }}
+               {{ form_errors(form.tel) }}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary">Ajouter un contact</button>
+        </div>
+    {{ form_end(form) }}
+</div>
 
  {% endblock %}
