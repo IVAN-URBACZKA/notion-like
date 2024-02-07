@@ -5,16 +5,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active text-white" href="{{ path('app_home') }}">Home</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link active text-white" href="{{ path('app_contact') }}">Carnet</a>
-        </li>
-      
+      <!-- Conteneur Flex pour les éléments de navigation -->
+      <div class="d-flex w-100 justify-content-between">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="{{ path('app_home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="{{ path('app_contact') }}">Carnet</a>
+          </li>
         </ul>
-     
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="{{ path('app_register') }}">Créer un compte</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" href="{{ path('app_login') }}">Login</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
