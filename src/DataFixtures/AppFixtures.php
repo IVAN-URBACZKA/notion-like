@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
                 $contact = new Contact();
                 $contact->setName('jean');
                 $contact->setFirstName($faker->firstNameMale());
-                $contact->setEmail("jean@gmail.com");
+                $contact->setEmail($faker->email());
                 $contact->setTel("0321665522");
                 $manager->persist($contact);
             
