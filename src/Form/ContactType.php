@@ -19,9 +19,8 @@ class ContactType extends AbstractType
         $builder
         ->add('name', TextType::class, [
             'attr' => [
-                'class' => 'form-control',
                 'minlength' => '2',
-                'maxlength' => '50'
+                'maxlength' => '50', 
             ],
             'label' => 'Nom',
             'constraints' => [
@@ -30,7 +29,6 @@ class ContactType extends AbstractType
         ])
             ->add('firstName', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
                     'minlength' => '2',
                     'maxlength' => '50'
                 ],
@@ -42,9 +40,10 @@ class ContactType extends AbstractType
             ->add('email', EmailType::class)
             ->add('tel', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
                     'minlength' => '10', 
-                    'maxlength' => '15'
+                    'maxlength' => '15', 
+                    'pattern' => '[0-9]+',
+                    'title' => 'Le numéro de téléphone doit contenir uniquement des chiffres.',
                 ],
                 'label' => 'Numéro de téléphone',
                 'constraints' => [
@@ -63,3 +62,4 @@ class ContactType extends AbstractType
         ]);
     }
 }
+
