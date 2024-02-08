@@ -27,39 +27,32 @@ class AppFixtures extends Fixture
         
             $faker = Factory::create();
 
-            for ($i=0; $i <=50 ; $i++) { 
-                $contact = new Contact();
-                $contact->setName('jean');
-                $contact->setFirstName($faker->firstNameMale());
-                $contact->setEmail($faker->email());
-                $contact->setTel("0321665522");
-                $manager->persist($contact);
-            
-            }
-
-            $manager->flush();
-
-            $contact = new Contact();
-            $contact->setName('jean');
-            $contact->setFirstName($faker->firstNameMale());
-            $contact->setEmail($faker->email());
-            $contact->setTel("0321665522");
-            
+            for ($i=0; $i <=5 ; $i++) { 
                 $user = new User();
-                $user->setEmail('johndoe@gmail.com');
+                $user->setEmail($faker->email());
                 $user->setRoles(["ROLE_USER"]);
-                $user->setPassword("password");
+               
                 $hashedPassword = $this->passwordHasher->hashPassword(
                     $user,
                     $plaintextPassword
                 );
                 $user->setPassword($hashedPassword);
-
-              
-                
-             $manager->persist($user);
-                $manager->flush();
+    
+                $contact = new Contact();
+                $contact->setName('jean');
+                $contact->setFirstName($faker->firstNameMale());
+                $contact->setEmail($faker->email());
+                $contact->setTel("0321665522");
+                $contact->setUser($user);
+                $manager->persist($contact);
+                $manager->persist($user);
             
+            }
+
+            $manager->flush();
+
+       
+
 
             
     }
