@@ -59,4 +59,41 @@ class ContactController extends AbstractController
             'form' => $form,
         ]);
     }
+
+
+    #[Route('/contact/update/{id}', name:'app_contact_update', methods:['GET', 'Post'])]
+    public function updateContact(Request $request, EntityManagerInterface $manager, Contact $contact): Response
+    {
+            $form = $this->createForm(ContactType::class, $contact);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $contact = $form->getData();
+
+            $manager->persist($contact);
+
+            $manager->flush();
+
+            return $this->redirectToRoute('app_home');
+                
+            }
+
+            return $this->render('contact/form_add.html.twig', [
+                'form' => $form,
+            ]);
+    }
+
+    #[Route('/contact/delete/{id}', name:'app_contact_delete', methods:['GET'])]
+    public function deleteContact(Request $request, EntityManagerInterface $manager, Contact $contact): Response
+    {
+
+        $manager->remove($contact);
+
+        $manager->flush();
+
+        return $this->redirectToRoute('app_home');
+
+    }
 }

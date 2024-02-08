@@ -26,6 +26,8 @@
       <th scope="col">Prénom</th>
       <th scope="col">E-mail</th>
       <th scope="col">Télephone</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -39,6 +41,8 @@
       <td>{{ contact.firstname }}</td>
       <td>{{ contact.email }}</td>
       <td>{{ contact.tel }}</td>
+      <td><a href="{{ path('app_contact_update', {'id': contact.id}) }}">Update</a></td>
+      <td><a href="{{ path('app_contact_delete', {'id': contact.id}) }}">Delete</a></td
     </tr>
     
   {% endfor %}
