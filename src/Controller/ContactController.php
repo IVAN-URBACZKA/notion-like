@@ -17,7 +17,15 @@ class ContactController extends AbstractController
     public function index(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request): Response
     {
 
-        $contacts = $entityManager->getRepository(Contact::class)->findAll();
+        if(!$user = $this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+        else {
+            $user = $this->getUser()->getId();
+        }
+
+        $contacts = $entityManager->getRepository(Contact::class)->findBy(['user'=>$user]);
+
 
         $contacts = $paginator->paginate(
             $contacts, 
@@ -38,15 +46,17 @@ class ContactController extends AbstractController
 
         $contact = new Contact();
 
+        $user = $this->getUser();
+
         $form = $this->createForm(ContactType::class, $contact);
 
-
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             
             $contact = $form->getData();
+
+            $contact->setUser($user);
 
             $manager->persist($contact);
 
