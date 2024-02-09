@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[UniqueEntity(
     fields: ['email'],
-    message: 'Mail déjà existant',
+    message: 'Ce Mail déjà existant',
 )]
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
