@@ -32,7 +32,7 @@ class ContactControllerTest extends WebTestCase
          $client->submitForm('Submit', [
             'contact[name]' => 'Jbl',
             'contact[firstName]' => 'kilucru',
-            'contact[email]' => 'jblol@gmail.com',
+            'contact[email]' => 'kilucru2@gmail.com',
             'contact[tel]' => '0321225566',
         ]);
         $this->assertResponseRedirects();
