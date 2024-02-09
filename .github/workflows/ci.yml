@@ -1,0 +1,30 @@
+name: Symfony CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite
+        coverage: pcov
+        tools: composer:v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Check Symfony requirements
+      run: php bin/console about
+
+    - name: Run PHPUnit tests
+      run: ./vendor/bin/phpunit --coverage-text
