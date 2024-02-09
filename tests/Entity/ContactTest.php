@@ -11,7 +11,7 @@ class ContactTest extends TestCase{
         $contact  = new Contact();
 
         $name = "Jacques";
-        $firstName = "Alain";
+        $firstName = "Jean";
         $email = "Jacquot@gmail.com";
         $tel = "0321221122";
 
