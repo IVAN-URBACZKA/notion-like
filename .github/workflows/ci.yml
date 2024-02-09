@@ -18,7 +18,7 @@ jobs:
         tools: composer:v2
 
     - name: Set DATABASE_URL environment variable
-      run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+      run: echo "DATABASE_URL=${{ secrets.DATABASE_URL_TEST }}" >> $GITHUB_ENV
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -28,6 +28,9 @@ jobs:
 
     - name: Check Symfony requirements
       run: php bin/console about
+
+    - name: Print DATABASE_URL
+      run: echo $DATABASE_URL
 
     - name: Run PHPUnit tests
       run: ./vendor/bin/phpunit --coverage-text
