@@ -17,6 +17,9 @@ jobs:
         coverage: pcov
         tools: composer:v2
 
+    - name: Set DATABASE_URL environment variable
+      run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
+      
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
