@@ -21,7 +21,7 @@ class ContactTest extends TestCase{
         $contact->setTel($tel);
 
         $this->assertEquals("Jacques", $contact->getName());
-        $this->assertEquals("Alain", $contact->getFirstName());
+        $this->assertEquals("Jean", $contact->getFirstName());
         $this->assertEquals("Jacquot@gmail.com", $contact->getEmail());
         $this->assertEquals("0321221122", $contact->getTel());
 
