@@ -19,7 +19,7 @@ jobs:
 
     - name: Set DATABASE_URL environment variable
       run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
-      
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
@@ -31,3 +31,5 @@ jobs:
 
     - name: Run PHPUnit tests
       run: ./vendor/bin/phpunit --coverage-text
+      env:
+        KERNEL_CLASS: 'App\Kernel'
