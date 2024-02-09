@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 use App\Repository\UserRepository;
+use Faker\Factory;
 
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -23,6 +24,8 @@ class ContactControllerTest extends WebTestCase
     }
 
        public function testCommentSubmission(){
+
+        $faker = Factory::create();
   
          $client = static::createClient();
          $userRepository = static::getContainer()->get(UserRepository::class);
@@ -32,7 +35,7 @@ class ContactControllerTest extends WebTestCase
          $client->submitForm('Submit', [
             'contact[name]' => 'Jbl',
             'contact[firstName]' => 'kilucru',
-            'contact[email]' => 'kilucru2@gmail.com',
+            'contact[email]' => $faker->email(),
             'contact[tel]' => '0321225566',
         ]);
         $this->assertResponseRedirects();
