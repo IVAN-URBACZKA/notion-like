@@ -10,7 +10,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
           MYSQL_DATABASE: symfony
         ports:
           - 3306:3306
@@ -33,7 +33,7 @@ jobs:
         tools: composer:v2
 
     - name: Set DATABASE_URL environment variable
-      run: echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony" >> $GITHUB_ENV
+      run: echo "DATABASE_URL=mysql://root:${{ secrets.MYSQL_PASSWORD }}@127.0.0.1:3306/symfony" >> $GITHUB_ENV
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
