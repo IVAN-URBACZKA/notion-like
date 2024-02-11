@@ -33,7 +33,7 @@ jobs:
         tools: composer:v2
 
     - name: Set DATABASE_URL environment variable
-      run: echo "DATABASE_URL=mysql://root:${{ secrets.MYSQL_PASSWORD }}@127.0.0.1:3306/symfony" >> $GITHUB_ENV
+      run: echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony" >> $GITHUB_ENV
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
