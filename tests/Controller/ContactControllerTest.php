@@ -33,7 +33,7 @@ class ContactControllerTest extends WebTestCase
          $client->loginUser($testUser);
          $client->request('GET', '/contact/add');
          $client->submitForm('Submit', [
-            'contact[name]' => 'Jbl',
+            'contact[name]' => 'Jean',
             'contact[firstName]' => 'kilucru',
             'contact[email]' => $faker->email(),
             'contact[tel]' => '0321225566',
