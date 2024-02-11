@@ -27,9 +27,9 @@ class AppFixtures extends Fixture
         
             $faker = Factory::create();
 
-            for ($i=0; $i <=5 ; $i++) { 
+           
                 $user = new User();
-                $user->setEmail($faker->email());
+                $user->setEmail("jean@gmail.com");
                 $user->setRoles(["ROLE_USER"]);
                
                 $hashedPassword = $this->passwordHasher->hashPassword(
@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
                 $manager->persist($contact);
                 $manager->persist($user);
             
-            }
+            
 
             $manager->flush();
 

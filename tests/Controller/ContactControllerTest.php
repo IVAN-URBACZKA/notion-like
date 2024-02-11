@@ -14,7 +14,7 @@ class ContactControllerTest extends WebTestCase
 
         $client = static::createClient();
         $userRepository = static::getContainer()->get(UserRepository::class);
-        $testUser = $userRepository->findOneByEmail('heloise.medhurst@halvorson.com');
+        $testUser = $userRepository->findOneByEmail('jean@gmail.com');
         $client->loginUser($testUser);
         $client->request('GET', '/contact/add');
     
@@ -29,7 +29,7 @@ class ContactControllerTest extends WebTestCase
   
          $client = static::createClient();
          $userRepository = static::getContainer()->get(UserRepository::class);
-         $testUser = $userRepository->findOneByEmail('heloise.medhurst@halvorson.com');
+         $testUser = $userRepository->findOneByEmail('jean@gmail.com');
          $client->loginUser($testUser);
          $client->request('GET', '/contact/add');
          $client->submitForm('Submit', [
