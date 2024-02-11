@@ -6,6 +6,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: symfony
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+
     steps:
     - uses: actions/checkout@v2
 
@@ -18,7 +33,13 @@ jobs:
         tools: composer:v2
 
     - name: Set DATABASE_URL environment variable
-      run: echo "DATABASE_URL=${{ secrets.DATABASE_URL_TEST }}" >> $GITHUB_ENV
+      run: echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony" >> $GITHUB_ENV
+
+    - name: Créer le schéma de la base de données
+      run: php bin/console doctrine:schema:create
+
+    - name: Charger les fixtures
+      run: php bin/console doctrine:fixtures:load --no-interaction
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
