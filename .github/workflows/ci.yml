@@ -35,12 +35,6 @@ jobs:
     - name: Set DATABASE_URL environment variable
       run: echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony" >> $GITHUB_ENV
 
-    - name: Créer le schéma de la base de données
-      run: php bin/console doctrine:schema:create
-
-    - name: Charger les fixtures
-      run: php bin/console doctrine:fixtures:load --no-interaction
-
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
@@ -49,6 +43,12 @@ jobs:
 
     - name: Check Symfony requirements
       run: php bin/console about
+
+    - name: Créer le schéma de la base de données
+      run: php bin/console doctrine:schema:create
+
+    - name: Charger les fixtures
+      run: php bin/console doctrine:fixtures:load --no-interaction
 
     - name: Print DATABASE_URL
       run: echo $DATABASE_URL
