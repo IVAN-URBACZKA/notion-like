@@ -36,7 +36,7 @@
 
 
      <tr class="table-active">
-      <th scope="row">{{ contact.id }}</th>
+      <th scope="row"><a href="{{ path('add_interaction', {'id': contact.id}) }}">{{ contact.id }}</a></th>
       <td>{{ contact.name }}</td>
       <td>{{ contact.firstname }}</td>
       <td>{{ contact.email }}</td>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -39,6 +41,14 @@ class Contact
 
     #[ORM\ManyToOne(inversedBy: 'contact')]
     private ?User $user = null;
+
+    #[ORM\OneToMany(targetEntity: Interaction::class, mappedBy: 'contact')]
+    private Collection $interaction;
+
+    public function __construct()
+    {
+        $this->interaction = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -101,6 +111,36 @@ class Contact
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Interaction>
+     */
+    public function getInteraction(): Collection
+    {
+        return $this->interaction;
+    }
+
+    public function addInteraction(Interaction $interaction): static
+    {
+        if (!$this->interaction->contains($interaction)) {
+            $this->interaction->add($interaction);
+            $interaction->setContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInteraction(Interaction $interaction): static
+    {
+        if ($this->interaction->removeElement($interaction)) {
+            // set the owning side to null (unless already changed)
+            if ($interaction->getContact() === $this) {
+                $interaction->setContact(null);
+            }
+        }
 
         return $this;
     }
