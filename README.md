@@ -3,7 +3,7 @@
 ## Brève Description
 Simple CRM est une solution de gestion de la relation client (CRM) conçue pour le suivi efficace des prospects. Facile à utiliser, il permet aux entreprises de créer des comptes utilisateurs, de gérer des fiches contacts et de suivre les interactions client de manière personnalisée.
 
-## Fonctionnalités
+## Fonctionnalités (non exhautive)
 - **Création de compte utilisateur** : Permet aux utilisateurs de s'inscrire et d'accéder à leur espace personnel.
 - **Login/Logout** : Gestion sécurisée des sessions utilisateurs.
 - **Création de fiches contact** : Enregistrez et gérez les informations de contact de vos prospects et clients.
