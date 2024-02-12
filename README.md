@@ -23,19 +23,19 @@ Simple CRM est une solution de gestion de la relation client (CRM) conçue pour 
 
 ### Étapes d'installation
 
-Clonez le dépôt GitHub du projet :
+- **Clonez le dépôt GitHub du projet :**
 git clone https://github.com/votre_nom_utilisateur/Simple-CRM.git
 
-Naviguez dans le dossier du projet :
+- **Naviguez dans le dossier du projet :**
 cd Simple-CRM
 
-Installez les dépendances PHP via Composer :
+- **Installez les dépendances PHP via Composer :**
 docker-compose exec php composer install
 
-Lancez les migrations pour créer la base de données :
+- **Lancez les migrations pour créer la base de données :**
 docker-compose exec php php bin/console doctrine:migrations:migrate
 
-Votre instance de Simple CRM devrait maintenant être opérationnelle et accessible via http://localhost.
+- **Votre instance de Simple CRM devrait maintenant être opérationnelle et accessible via http://localhost.**
 
 ### Contribution
 Les contributions sont les bienvenues ! Pour contribuer au projet, veuillez forker le dépôt, créer une branche pour votre fonctionnalité ou correction, puis soumettre une pull request.
