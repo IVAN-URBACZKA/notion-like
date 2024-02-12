@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InteractionController!{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    {% for interaction in interactions %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Interaction {{ interaction.id }}</h5>
+                <p class="card-text"><strong>Statut:</strong> {{ interaction.statut }}</p>
+                <p class="card-text"><strong>Rapport:</strong> {{ interaction.report }}</p>
+                <p class="card-text"><strong>Priorité:</strong> {{ interaction.priority }}</p>
+                <p class="card-text"><strong>Type:</strong> {{ interaction.typeInteraction }}</p>
+                <p class="card-text"><strong>Date:</strong> {{ interaction.date|date("F jS \\a\\t g:ia") }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
