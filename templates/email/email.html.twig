@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="text-center mt-5">Formulaire de contact </h1>
+
+<div class="container mt-5">
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
+
+  
+    {{ form_start(form) }}
+
+     
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+            
+        <div class="row">
+            <div class="col-md-6">
+            {{ form_label(form.subject) }}
+            {{ form_widget(form.subject) }}
+            {{ form_errors(form.subject) }}
+            </div>
+            <div class="col-md-6">
+               {{ form_label(form.text) }}
+               {{ form_widget(form.text) }}
+               {{ form_errors(form.text) }}
+            </div>
+            <div class="col-md-6">
+                 {{ form_label(form.email) }}
+               {{ form_widget(form.email) }}
+               {{ form_errors(form.email) }}
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="Submit" name="Submit" class="btn btn-primary">Envoyer mon e-mail</button>
+        </div>
+    {{ form_end(form) }}
+</div>
+
+ {% endblock %}
