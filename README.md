@@ -8,12 +8,14 @@ Simple CRM est une solution de gestion de la relation client (CRM) conçue pour 
 - **Login/Logout** : Gestion sécurisée des sessions utilisateurs.
 - **Création de fiches contact** : Enregistrez et gérez les informations de contact de vos prospects et clients.
 - **Créations d'interactions (suivi client) personnalisés** : Suivez l'historique des interactions avec chaque contact pour une gestion personnalisée de la relation client.
+- **Envoi E-mails**
 
 ## Technologies Utilisées
 - **PHP 8** : Langage de programmation côté serveur.
 - **Symfony 7** : Framework PHP pour le développement web.
 - **Docker** : Plateforme pour le développement, le déploiement et l'exécution d'applications dans des conteneurs.
 - **CI/CD (GitHub Actions)** : Automatisation du processus d'intégration et de déploiement continu.
+- **Mailtrap**: Plateforme d'envoi d'emails.
 
 ## Installation
 
