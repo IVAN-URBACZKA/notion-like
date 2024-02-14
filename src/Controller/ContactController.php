@@ -106,4 +106,34 @@ class ContactController extends AbstractController
         return $this->redirectToRoute('app_home');
 
     }
+
+    #[Route('/contact/export/csv', name:'app_export_csv')]
+    public function exportCsv(EntityManagerInterface $entityManager, Request $request): Response
+    {
+
+        if(!$user = $this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+        else {
+            $user = $this->getUser()->getId();
+        }
+
+        $contacts = $entityManager->getRepository(Contact::class)->findBy(['user'=>$user]);
+
+        $myExportCSV = "Id; Nom; Prenom; Email; Telephone \n";
+
+        foreach ($contacts as $contact) {
+            $myExportCSV .= "{$contact->getId()}; {$contact->getName()}; {$contact->getFirstName()}; {$contact->getEmail()}; {$contact->getTel()} \n";
+        }
+        
+        return new Response(
+            $myExportCSV,
+            200,
+            [
+              'Content-Type' => 'application/vnd.ms-excel',
+              "Content-disposition" => "attachment; filename=contact.csv"
+           ]
+     );
+
+    }
 }
