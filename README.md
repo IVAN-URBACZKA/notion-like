@@ -5,10 +5,10 @@ Simple CRM est une solution de gestion de la relation client (CRM) conçue pour 
 
 ## Fonctionnalités (non exhautive)
 - **Création de compte utilisateur** : Permet aux utilisateurs de s'inscrire et d'accéder à leur espace personnel.
-- **Login/Logout** : Gestion sécurisée des sessions utilisateurs.
+- **Login/Logout** : Gestion sécurisée des sessions utilisateurs. ( Ajout de listener de mise en cache )
 - **Création de fiches contact** : Enregistrez et gérez les informations de contact de vos prospects et clients.
 - **Créations d'interactions (suivi client) personnalisés** : Suivez l'historique des interactions avec chaque contact pour une gestion personnalisée de la relation client.
-- **Envoi E-mails**
+- **Envoi E-mails**: Formulaire de contact
 
 ## Technologies Utilisées
 - **PHP 8** : Langage de programmation côté serveur.
