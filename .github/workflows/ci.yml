@@ -35,14 +35,14 @@ jobs:
     - name: Set DATABASE_URL environment variable
       run: echo "DATABASE_URL=mysql://root:${{ secrets.MYSQL_PASSWORD }}@127.0.0.1:3306/symfony" >> $GITHUB_ENV
 
+    - name: Install Mailer symfony
+      run: composer require symfony/mailer
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: Install Mailer symfony
-      run: composer require symfony/mailer
 
     - name: Check Symfony requirements
       run: php bin/console about
