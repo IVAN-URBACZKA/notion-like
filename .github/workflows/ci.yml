@@ -41,11 +41,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Check Symfony requirements
-      run: php bin/console about
-
     - name: Install Mailer symfony
       run: composer require symfony/mailer
+
+    - name: Check Symfony requirements
+      run: php bin/console about
 
     - name: Créer la base de données de test
       run: php bin/console doctrine:database:create --env=test
