@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">Carnet</a>
+    <a class="navbar-brand text-white" href="#">Crm</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,12 +8,9 @@
       <!-- Conteneur Flex pour les éléments de navigation -->
       <div class="d-flex w-100 justify-content-between">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active text-white" href="{{ path('app_home') }}">Home</a>
-          </li>
             {% if app.user %}
              <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Carnet</a>
+          <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contacts</a>
           <div class="dropdown-menu">
            
             <a class="dropdown-item" href="{{ path('app_contact') }}" href="#">Mes Contacts</a>
@@ -23,6 +20,7 @@
         </ul>
         <ul class="navbar-nav">
            <li class="nav-item">
+           <a class="nav-link active text-white" href="{{ path('email_contact') }}">Nous contacter</a>
           {% if app.user %}
             {% else %}
            <a class="nav-link active text-white" href="{{ path('app_register') }}">Créer un compte</a>

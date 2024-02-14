@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MailerController extends AbstractController
 {
-    #[Route('/email')]
+    #[Route('/email', name:"email_contact")]
     public function sendEmail(MailerInterface $mailer, Request $request): Response
     {
 
