@@ -3,6 +3,10 @@
 {% block title %}Interaction{% endblock %}
 
 {% block body %}
+{% if interactions|length is same as(0)  %}
+<p class="text-center mt-5 font-weight-bold display-4">Pas d'interactions</p>
+{% endif %}
+
 <div class="container mt-5">
     {% for interaction in interactions %}
         <div class="card mb-3">
