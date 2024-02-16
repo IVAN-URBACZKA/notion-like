@@ -23,11 +23,20 @@ class InteractionType extends AbstractType
                     'RS' => Interaction::RESEAUX_SOCIAUX
                 ]])
             ->add('report')
-            ->add('priority')
-            ->add('statut')
+            ->add('priority', ChoiceType::class,[
+                'choices'  => [
+                    'Important' => Interaction::HIGH,
+                    'Moyen' => Interaction::MIDDLE,
+                    'Basse' => Interaction::LOW
+                ]])
+            ->add('statut', ChoiceType::class,[
+                'choices'  => [
+                    'Terminé' => Interaction::COMPLETED,
+                    'En cours' => Interaction::INPROGRESS,
+                ]])
             ->add('contact', EntityType::class, [
                 'class' => Contact::class,
-'choice_label' => 'id',
+'choice_label' => 'email',
             ])
         ;
     }

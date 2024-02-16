@@ -11,14 +11,32 @@ use App\Repository\InteractionRepository;
 class Interaction
 {
 
-    const TEL = 'téléphone';
-    const EMAIL = 'email';
-    const RESEAUX_SOCIAUX = 'réseaux sociaux';
+    const TEL = 'Téléphone';
+    const EMAIL = 'Email';
+    const RESEAUX_SOCIAUX = 'Réseaux sociaux';
+
+    const HIGH = "Important";
+    const MIDDLE = "Moyenne";
+    const LOW = "Basse";
+
+    const COMPLETED = "Terminé";
+    const INPROGRESS = 'En cours';
 
     private static $typesValides = [
         SELF::TEL,
         SELF::EMAIL, 
         SELF::RESEAUX_SOCIAUX
+    ];
+
+    private static $priorityValides = [
+        SELF::HIGH,
+        SELF::MIDDLE,
+        SELF::LOW
+    ];
+
+    private static $statutValides = [
+        SELF::COMPLETED,
+        SELF::INPROGRESS
     ];
 
     #[ORM\Id]
@@ -102,9 +120,13 @@ class Interaction
         return $this->priority;
     }
 
-    public function setPriority(string $priority): static
+    public function setPriority(string $typePriority): static
     {
-        $this->priority = $priority;
+
+        if(!in_array($typePriority, self::$priorityValides)){
+            throw new InvalidArgumentException("Type de priorité invalide.");
+        }
+        $this->priority = $typePriority;
 
         return $this;
     }
@@ -114,9 +136,12 @@ class Interaction
         return $this->statut;
     }
 
-    public function setStatut(string $statut): static
+    public function setStatut(string $typeStatut): static
     {
-        $this->statut = $statut;
+        if(!in_array($typeStatut, self::$statutValides)){
+            throw new InvalidArgumentException("Type de statut invalide.");
+        }
+        $this->statut = $typeStatut;
 
         return $this;
     }

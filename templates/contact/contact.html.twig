@@ -29,6 +29,7 @@
       <th scope="col">Télephone</th>
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
+      <th scope="col">Interaction</th>
     </tr>
   </thead>
   <tbody>
@@ -43,7 +44,8 @@
       <td>{{ contact.email }}</td>
       <td>{{ contact.tel }}</td>
       <td><a href="{{ path('app_contact_update', {'id': contact.id}) }}">Update</a></td>
-      <td><a href="{{ path('app_contact_delete', {'id': contact.id}) }}" onclick="return confirm('Attention, cette action est irréversible!')">Delete</a></td
+      <td><a href="{{ path('app_contact_delete', {'id': contact.id}) }}" onclick="return confirm('Attention, cette action est irréversible!')">Delete</a></td>
+      <td><a href="{{ path('add_interaction', {'id': contact.id}) }}">Interaction</a></td>
     </tr>
     
   {% endfor %}
