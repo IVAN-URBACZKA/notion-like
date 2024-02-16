@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use ApiPlatform\Metadata\ApiResource;
 
 
 
@@ -16,6 +17,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
     message: 'Ce Mail déjà existant',
 )]
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
+#[ApiResource]
 class Contact
 {
     #[ORM\Id]
