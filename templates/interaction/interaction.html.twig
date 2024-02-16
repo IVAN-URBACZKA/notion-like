@@ -17,6 +17,7 @@
                 <p class="card-text"><strong>Priorité:</strong> {{ interaction.priority }}</p>
                 <p class="card-text"><strong>Type:</strong> {{ interaction.typeInteraction }}</p>
                 <p class="card-text"><strong>Date:</strong> {{ interaction.date|date("F jS \\a\\t g:ia") }}</p>
+                <a href="{{ path('delete_interaction' ,  {'id': interaction.id}) }}">Supprimer</a>
             </div>
         </div>
     {% endfor %}

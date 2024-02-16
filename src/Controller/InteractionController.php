@@ -58,4 +58,16 @@ class InteractionController extends AbstractController
         ]);
         
     }
+
+
+    #[Route('/delete/interaction/{id}', name:'delete_interaction', methods:['GET'])]
+    public function deleteInteraction(Request $request, EntityManagerInterface $manager, Interaction $interaction): Response
+    {
+
+        $manager->remove($interaction);
+
+        $manager->flush();
+
+        return $this->redirectToRoute('app_contact');
+    }
 }
