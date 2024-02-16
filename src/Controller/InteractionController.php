@@ -48,7 +48,7 @@ class InteractionController extends AbstractController
             $manager->flush();
 
            
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_contact');
 
         }
 
